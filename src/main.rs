@@ -3,7 +3,7 @@ use clap::{App,load_yaml};
 
 fn main(){
     let yaml = load_yaml!("cli.yaml");
-    let matches = App::from(yaml).get_matches();
+    let _matches = App::from(yaml).get_matches();
 
     let connection = sqlite::open("/home/xiuwei/.xlog.db").unwrap();
     // println!("{:?}",connection);
@@ -27,12 +27,12 @@ fn main(){
             //     _ => (),
             // }
             // println!("{:?},{:?}", column,value.unwrap());
-            println!("{},{}", column.blue(),value.unwrap().red());
+            //println!("{},{}", column.blue(),value.unwrap().red());
+            println!("{}", column.blue());
             // println!("{} = {}", column.blue(), value.unwrap());
         }
         true
-    })
-    .unwrap();
+    }).unwrap();
     println!("{}", "abc".to_string().red());
 }
 
