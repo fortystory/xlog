@@ -1,11 +1,14 @@
 use colored::Colorize;
-use sqlite::*;
+use clap::{App,load_yaml};
 
-fn main() {
-    let connection = sqlite::open("/Users/nice/.xlog.db").unwrap();
+fn main(){
+    let yaml = load_yaml!("cli.yaml");
+    let matches = App::from(yaml).get_matches();
+
+    let connection = sqlite::open("/home/xiuwei/.xlog.db").unwrap();
     // println!("{:?}",connection);
     //CREATE TABLE users (name TEXT, age INTEGER);
-    
+
     // connection
     // .execute(
     //     "
@@ -17,8 +20,8 @@ fn main() {
 
     //let list = connection.execute("SELECT * FROM xlog order by id desc limit 20");
 
-    connection.iterate("SELECT * FROM xlog order by id desc limit 20", |pairs| {
-        for &(column, value) in pairs.iter() {
+    connection.iterate("SELECT * FROM xlog order by id desc limit 20", |xlog| {
+        for &(column, value) in xlog.iter() {
             // match value {
             //     Some(v) => println!("{:?},{:?}", column,v)
             //     _ => (),
@@ -62,4 +65,3 @@ struct XlogType{
     log_type: String, //类型
     type_desc:String  //描述
 }
-
