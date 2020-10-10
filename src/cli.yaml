@@ -3,20 +3,26 @@ version: "0.0.1"
 author: 修伟 <forty40@live.cn>
 about: xlog 记录
 args:
+  - type:
+      help: type of content
+      short: t
+      long: type
+      multiple: true
+      takes_value: false
   - config:
-    short: c
-    long: config
-    value_name: FILE
-    about: Sets a custom config file
-    takes_value: true
+      short: c
+      long: config
+      value_name: FILE
+      about: Sets a custom config file
+      takes_value: true
   - INPUT:
-    about: Sets the input file to use
-    required: true
-    index: 1
+      about: Sets the input file to use
+      required: true
+      index: 1
   - verbose:
-    short: v
-    multiple: true
-    about: Sets the level of verbosity
+      short: v
+      multiple: true
+      about: 0.0.1
 subcommands:
   - test:
     about: controls testing features

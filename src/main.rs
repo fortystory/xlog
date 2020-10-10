@@ -3,8 +3,17 @@ use clap::{App,load_yaml};
 
 fn main(){
     let yaml = load_yaml!("cli.yaml");
-    let _matches = App::from(yaml).get_matches();
+    let matches = App::from(yaml).get_matches();
 
+    if let Some(o) = matches.value_of("opt") {
+        println!("Value for output: {}", o.red());
+    }
+
+    if let Some(v) = matches.value_of("version") {
+        println!("Value for output: {}", o.red());
+    }
+
+    /*
     let connection = sqlite::open("/home/xiuwei/.xlog.db").unwrap();
     // println!("{:?}",connection);
     //CREATE TABLE users (name TEXT, age INTEGER);
@@ -34,6 +43,7 @@ fn main(){
         true
     }).unwrap();
     println!("{}", "abc".to_string().red());
+    */
 }
 
 #[derive(Debug)]
