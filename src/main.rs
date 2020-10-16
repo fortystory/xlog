@@ -17,7 +17,7 @@ fn main(){
         println!("Value for version: {}", v.red());
     }
 
-    /*
+
     let connection = sqlite::open("/home/xiuwei/.xlog.db").unwrap();
     // println!("{:?}",connection);
     //CREATE TABLE users (name TEXT, age INTEGER);
@@ -35,19 +35,21 @@ fn main(){
 
     connection.iterate("SELECT * FROM xlog order by id desc limit 20", |xlog| {
         for &(column, value) in xlog.iter() {
-            // match value {
-            //     Some(v) => println!("{:?},{:?}", column,v)
-            //     _ => (),
+            //todo
+            // if(){
+            //     continue;
             // }
+            match value {
+                Some(v) => println!("{}:{}", column.green(),v.to_string().blue()),
+                _ => (),
+            }
             // println!("{:?},{:?}", column,value.unwrap());
             //println!("{},{}", column.blue(),value.unwrap().red());
-            println!("{}", column.blue());
+            // println!("{} -> {}", column.blue(),value.unwrap().red());
             // println!("{} = {}", column.blue(), value.unwrap());
         }
         true
     }).unwrap();
-    println!("{}", "abc".to_string().red());
-    */
 }
 
 #[derive(Debug)]
