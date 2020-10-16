@@ -19,10 +19,6 @@ args:
       about: Sets the input file to use
       required: true
       index: 1
-  - verbose:
-      short: v
-      multiple: true
-      about: 0.0.1
 subcommands:
   - test:
     about: controls testing features
