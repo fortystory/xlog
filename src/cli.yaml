@@ -8,7 +8,7 @@ args:
       short: t
       long: type
       multiple: true
-      takes_value: false
+      takes_value: true
   - config:
       short: c
       long: config

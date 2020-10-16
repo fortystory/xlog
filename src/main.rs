@@ -1,16 +1,20 @@
 use colored::Colorize;
 use clap::{App,load_yaml};
 
+//cargo run -- input --type type
 fn main(){
     let yaml = load_yaml!("cli.yaml");
     let matches = App::from(yaml).get_matches();
 
-    if let Some(o) = matches.value_of("opt") {
+    if let Some(o) = matches.value_of("type") {
         println!("Value for output: {}", o.red());
+    }
+    if let Some(input) = matches.value_of("INPUT") {
+        println!("Value for input: {}", input.green());
     }
 
     if let Some(v) = matches.value_of("version") {
-        println!("Value for output: {}", o.red());
+        println!("Value for version: {}", v.red());
     }
 
     /*
