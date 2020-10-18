@@ -43,12 +43,14 @@ fn main(){
             match value {
                 Some(v) => {
                     if s == ""{
-                        s = format!("{}{} {}",s,column.green(),v.to_string().blue());
+                        s = format!("{}{:16} {}",s,column.green(),v.to_string().blue());
                     }else{
-                        s = format!("{}\n{} {}",s,column.green(),v.to_string().blue());
+                        s = format!("{}\n{:16} {}",s,column.green(),v.to_string().blue());
                     }
                 },
-                _ => (),
+                _ => {
+                    s = format!("{}\n{:16} {}",s,column.green(),"--".blue());
+                }
             }
             // println!("{:?},{:?}", column,value.unwrap());
             //println!("{},{}", column.blue(),value.unwrap().red());
@@ -63,22 +65,22 @@ fn main(){
 
 #[derive(Debug)]
 struct Xlog {
-    id: u64,
-    content: String,
-    log_type: String,
-    log_level: u8,
+    id              : u64,
+    content         : String,
+    log_type        : String,
+    log_level       : u8,
     appointment_time: u64,
-    reminder_time: u64,
-    extra: String,
-    add_stamp: u64,   //毫秒时间戳
-    add_time: String, //2020-10-03 20:29:23
-    add_year: u8,     //年
-    add_month: u8,    //月
-    add_date: u8,     //日
-    add_day: u8,      //星期
-    add_hour: u8,     //小时
-    add_minute: u8,   //分钟
-    add_second: u8,   //秒
+    reminder_time   : u64,
+    extra           : String,
+    add_stamp       : u64,      //毫秒时间戳
+    add_time        : String,   //2020-10-03 20:29:23
+    add_year        : u8,       //年
+    add_month       : u8,       //月
+    add_date        : u8,       //日
+    add_day         : u8,       //星期
+    add_hour        : u8,       //小时
+    add_minute      : u8,       //分钟
+    add_second      : u8,       //秒
 }
 
 impl Xlog{
@@ -87,6 +89,6 @@ impl Xlog{
 
 #[derive(Debug)]
 struct XlogType{
-    log_type: String, //类型
-    type_desc:String  //描述
+    log_type : String,   //类型
+    type_desc: String    //描述
 }
